@@ -1,7 +1,7 @@
 interface ProductProps {
-  title: string,
-  price: number,
-  quantity: number,
+  title: string;
+  price: number;
+  quantity: number;
 }
 
 // maybe take out product actions into separate component
@@ -14,9 +14,13 @@ export default function Product({ title, price, quantity }: ProductProps) {
         <p className="price">${price}</p>
         <p className="quantity">{quantity} left in stock</p>
         <div className="actions product-actions">
-          <button className="add-to-cart" disabled={quantity === 0}>Add to Cart</button>
+          <button className="add-to-cart" disabled={quantity === 0}>
+            Add to Cart
+          </button>
           <button className="edit">Edit</button>
-          <button className="delete-button"><span>X</span></button>
+          <button className="delete-button">
+            <span>X</span>
+          </button>
         </div>
       </div>
     </li>

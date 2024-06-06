@@ -1,7 +1,7 @@
 interface CartItemProps {
-  title: string,
-  quantity: number,
-  price: number,
+  title: string;
+  quantity: number;
+  price: number;
 }
 
 export default function CartItem({ title, quantity, price }: CartItemProps) {
@@ -11,5 +11,5 @@ export default function CartItem({ title, quantity, price }: CartItemProps) {
       <td>{quantity}</td>
       <td>${price}</td>
     </tr>
-  )
+  );
 }
