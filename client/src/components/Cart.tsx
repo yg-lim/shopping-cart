@@ -44,6 +44,7 @@ export default function Cart() {
         <tbody>
           {cartItems.map((item: CartItemType) => {
             return <CartItem
+              key={item._id}
               title={item.title}
               quantity={item.quantity}
               price={item.price}

@@ -1,6 +1,6 @@
-import { useState } from 'react'
 import './assets/index.css'
 import Cart from './components/Cart'
+import ProductListing from './components/ProductListing'
 
 function App() {
   return (
@@ -9,6 +9,9 @@ function App() {
         <h1>The Shop!</h1>
         <Cart />
       </header>
+      <main>
+        <ProductListing />
+      </main>
     </div>
   )
 }

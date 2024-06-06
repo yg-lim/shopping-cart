@@ -1,4 +1,4 @@
-export interface CartItem {
+export interface Product {
   _id: string,
   title: string,
   price: number,
@@ -6,3 +6,5 @@ export interface CartItem {
   createdAt: string,
   updatedAt: string,
 }
+
+export interface CartItem extends Product {}
