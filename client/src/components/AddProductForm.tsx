@@ -1,20 +1,49 @@
 import { useState } from "react";
 import { Dispatch, SetStateAction } from "react";
+import { addNewProduct } from "../services/axios-services";
+import { Product as ProductType } from "../types/index";
 
 interface AddProductFormProps {
   setFormVisible: Dispatch<SetStateAction<boolean>>;
+  setProducts: Dispatch<SetStateAction<ProductType[]>>;
 }
 
 export default function AddProductForm({
   setFormVisible,
+  setProducts,
 }: AddProductFormProps) {
   const [formName, setFormName] = useState("");
   const [formPrice, setFormPrice] = useState("");
   const [formQuantity, setFormQuantity] = useState("");
 
+  async function handleSubmitForm(callback?: () => void) {
+    try {
+      const newProduct = await addNewProduct(
+        formName,
+        parseFloat(formPrice),
+        parseInt(formQuantity),
+      );
+      setProducts((prev) => [...prev, newProduct]);
+      if (callback) callback();
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
+  function resetForm() {
+    setFormName("");
+    setFormPrice("");
+    setFormQuantity("");
+  }
+
   return (
     <div className="add-form">
-      <form>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSubmitForm(resetForm);
+        }}
+      >
         <div className="input-group">
           <label htmlFor="product-name">Product Name:</label>
           <input
@@ -52,14 +81,7 @@ export default function AddProductForm({
           />
         </div>
         <div className="actions form-actions">
-          <button
-            type="submit"
-            onClick={(e) => {
-              e.preventDefault();
-            }}
-          >
-            Add
-          </button>
+          <button type="submit">Add</button>
           <button
             type="button"
             onClick={(e) => {

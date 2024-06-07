@@ -11,3 +11,17 @@ export async function getProducts(): Promise<Product[]> {
   const { data } = await axios.get(baseUrl + "/products");
   return data;
 }
+
+export async function addNewProduct(
+  title: string,
+  price: number,
+  quantity: number,
+): Promise<Product> {
+  const { data } = await axios.post(baseUrl + "/products", {
+    title,
+    price,
+    quantity,
+  });
+
+  return data;
+}

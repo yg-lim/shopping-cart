@@ -1,20 +1,11 @@
-import { useState, useEffect } from "react";
-import { Product as ProductType } from "../types/index";
-import { getProducts } from "../services/axios-services";
 import Product from "./Product";
+import { Product as ProductType } from "../types/index";
 
-export default function ProductListing() {
-  const [products, setProducts] = useState<ProductType[]>([]);
+interface ProductListingProps {
+  products: ProductType[];
+}
 
-  useEffect(() => {
-    async function fetchProducts() {
-      const data = await getProducts();
-      setProducts(data);
-    }
-
-    fetchProducts();
-  }, []);
-
+export default function ProductListing({ products }: ProductListingProps) {
   return (
     <div className="product-listing">
       <h2>Products</h2>
