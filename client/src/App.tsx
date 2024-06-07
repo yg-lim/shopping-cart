@@ -29,7 +29,7 @@ function App() {
         <Cart />
       </header>
       <main>
-        <ProductListing products={products} />
+        <ProductListing products={products} setProducts={setProducts} />
         {formVisible ? (
           <AddProductForm
             setFormVisible={setFormVisible}

@@ -25,3 +25,8 @@ export async function addNewProduct(
 
   return data;
 }
+
+export async function deleteProduct(productId: string): Promise<boolean> {
+  const { data } = await axios.delete(baseUrl + `/products/${productId}`);
+  return !data;
+}
